@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="brand">Vadodara House Price Predictor</div><div class="nav-links"><a href="{{ url_for('home') }}">Home</a><a href="{{ url_for('predict') }}">Predictor</a><a href="{{ url_for('about') }}">About</a> <a href="{{ url_for('contact') }}">Contact</a></div></div></nav>
+<main class="main-card">
+  <section class="card">
+    <header class="card-head">
+      <h1>Predictor</h1>
+      <p class="subtitle">Enter details below — Bathrooms, Balcony and Area are input boxes.</p>
+    </header>
+    <form id="predictForm" class="form-grid" action="/predict" method="POST" autocomplete="off">
+      <div class="form-group"><label for="house_type">House Type*</label><select id="house_type" name="house_type" required><option value="">Select House Type</option><option value="Apartment">Apartment</option><option value="Independent House">Independent House</option><option value="Villa">Villa</option><option value="Studio">Studio</option></select></div>
+     <select name="location" id="location" required>
+  <option value="" disabled selected>Select Location</option>
+  <option value="Ajwa Road">Ajwa Road</option>
+  <option value="Akota">Akota</option>
+  <option value="Alkapuri">Alkapuri</option>
+  <option value="Atladra">Atladra</option>
+  <option value="Bhayli">Bhayli</option>
+  <option value="Chhani">Chhani</option>
+  <option value="Fatehgunj">Fatehgunj</option>
+  <option value="Gorwa">Gorwa</option>
+  <option value="Gotri">Gotri</option>
+  <option value="Harni">Harni</option>
+  <option value="Karelibaug">Karelibaug</option>
+  <option value="Khodiyar Nagar">Khodiyar Nagar</option>
+  <option value="Laxmipura">Laxmipura</option>
+  <option value="Madhav Pura">Madhav Pura</option>
+  <option value="Mandvi">Mandvi</option>
+  <option value="Maneja">Maneja</option>
+  <option value="Manjalpur">Manjalpur</option>
+  <option value="Navapura">Navapura</option>
+  <option value="New Alkapuri">New Alkapuri</option>
+  <option value="New Karelibaugh">New Karelibaugh</option>
+  <option value="New Sama">New Sama</option>
+  <option value="New VIP Road">New VIP Road</option>
+  <option value="Sama">Sama</option>
+  <option value="Sayajipura">Sayajipura</option>
+  <option value="Soma Talav">Soma Talav</option>
+  <option value="Vasant Vihar">Vasant Vihar</option>
+  <option value="Vasna Road">Vasna Road</option>
+  <option value="Vasna-Bhayli Road">Vasna-Bhayli Road</option>
+  <option value="Waghodia Road">Waghodia Road</option>
+  </select>
+  
+      <div class="form-group"><label for="bhk">Size (BHK)*</label><select id="bhk" name="bhk" required><option value="">Select BHK</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+      <div class="form-group"><label for="bathrooms">Bathrooms*</label><input id="bathrooms" name="bathrooms" type="text" inputmode="numeric" placeholder="e.g., 2" required></div>
+      <div class="form-group"><label for="balcony">Balcony*</label><input id="balcony" name="balcony" type="text" inputmode="numeric" placeholder="e.g., 1" required></div>
+      <div class="form-group full"><label for="area_sqft">Area Size (sqft)*</label><input id="area_sqft" name="area_sqft" type="text" inputmode="numeric" placeholder="e.g., 1200" required></div>
+      <div class="form-actions full"><button type="submit" class="btn-predict">Predict Price</button></div>
+    </form>
+    <div id="result-area" class="result-area">
+      {% if prediction_text %}
+      <div class="result-card server-result"><h2>{{ prediction_text }}</h2></div>
+      {% endif %}
+      <div id="ajax-result" class="result-card" style="display:none"></div>
+      <div id="error-box" class="result-card error" style="display:none"></div>
+    </div>
+    <footer class="card-foot"><small>Created by Manthan</small></footer>
+  </section>
+</main>
+<script>
+const form = document.getElementById('predictForm');
+const ajaxResult = document.getElementById('ajax-result');
+const errorBox = document.getElementById('error-box');
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  ajaxResult.style.display = 'none'; ajaxResult.innerHTML = '';
+  errorBox.style.display = 'none'; errorBox.innerHTML = '';
+  const fd = new FormData(form); const obj = {}; fd.forEach((v,k)=> obj[k]=v);
+  const btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.textContent = 'Predicting...';
+  try {
+    const resp = await fetch('/predict', {method:'POST', headers:{'Content-Type':'application/json','X-Requested-With':'XMLHttpRequest'}, body: JSON.stringify(obj)});
+    const j = await resp.json();
+    if (resp.status !== 200) {
+      errorBox.style.display = 'block';
+      errorBox.innerHTML = '<strong>Error:</strong> ' + (j.error || 'Unknown error');
+      window.scrollTo({top: errorBox.offsetTop-20, behavior:'smooth'});
+    } else if (j.pred_formatted) {
+      ajaxResult.style.display = 'block';
+      ajaxResult.innerHTML = '<div class="float-card"><h2>🏷️ Estimated Price:</h2><h1>' + j.pred_formatted + '</h1></div>';
+      window.scrollTo({top: ajaxResult.offsetTop-20, behavior:'smooth'});
+    }
+  } catch (err) {
+    errorBox.style.display = 'block';
+    errorBox.innerHTML = '<strong>Error:</strong> ' + err;
+  } finally {
+    btn.disabled = false; btn.textContent = 'Predict Price';
+  }
+});
+</script>
+</body>
+</html>

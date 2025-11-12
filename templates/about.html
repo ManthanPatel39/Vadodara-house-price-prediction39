@@ -1,0 +1,6 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="brand">Vadodara House Price Predictor</div><div class="nav-links"><a href="{{ url_for('home') }}">Home</a><a href="{{ url_for('predict') }}">Predictor</a><a href="{{ url_for('about') }}">About</a> <a href="{{ url_for('contact') }}">Contact</a></div></div></nav>
+<main class="about-main"><section class="card about-card"><h1>About the Project</h1><p>This project predicts house prices in Vadodara using a machine learning model. The frontend is a blue–teal premium design optimized for portfolios.</p><h3>Details</h3><ul><li><strong>Model:</strong> Linear Regression (trained on local dataset)</li><li><strong>Tech stack:</strong> Python, Flask, Scikit-Learn, Pandas, HTML, CSS</li></ul><p>How to run: ensure your app.py and model files are in the project root, then run <code>python app.py</code> and open <code>http://127.0.0.1:5000</code>.</section></main></body></html>

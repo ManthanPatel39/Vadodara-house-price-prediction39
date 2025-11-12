@@ -1,0 +1,8 @@
+
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Charts</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<nav><div class="nav-inner"><div class="brand">Vadodara House Price Predictor</div><div><a href="/">Home</a><a href="/predict">Predictor</a><a href="/charts">Charts</a><a href="/about">About</a><a href="/contact">Contact</a></div></div></nav>
+<main class="container"><section class="card"><h2>Vadodara Housing Insights</h2><p>Visual analysis of Vadodara housing data.</p>
+<div style="margin-top:12px"><h3>Average Price by Location</h3><img src="{{ url_for('static', filename='images/bar_chart.png') }}" class="chart-img"></div>
+<div style="margin-top:18px"><h3>House Type Distribution</h3><img src="{{ url_for('static', filename='images/pie_chart.png') }}" class="chart-img"></div>
+<p style="margin-top:18px"><a href="/"><button>Back to Home</button></a></p>
+</section></main><footer>Created by Mihika</footer></body></html>

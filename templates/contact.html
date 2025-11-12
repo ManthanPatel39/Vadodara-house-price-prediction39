@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">Vadodara House Price Predictor</div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('predict') }}">Predictor</a>
+      <a href="{{ url_for('about') }}">About</a>
+      <a href="{{ url_for('contact') }}">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="main-card">
+  <section class="card">
+    <h2>Contact Us</h2>
+    <p class="lead">Have questions or feedback? We’d love to hear from you!</p>
+
+    <form method="post" action="/contact" class="form-grid" autocomplete="off">
+      <div class="form-group full">
+        <label for="name">Name*</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" required>
+      </div>
+      <div class="form-group full">
+        <label for="email">Email*</label>
+        <input id="email" name="email" type="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group full">
+        <label for="message">Message*</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <div class="form-actions full">
+        <button type="submit" class="btn-predict">Send Message</button>
+      </div>
+    </form>
+
+    {% if msg %}
+      <div class="result-card float-card" style="margin-top:12px;">{{ msg }}</div>
+    {% endif %}
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 All Rights Reserved |Vadodara House Price Predictor</strong></p>
+</footer>
+</body>
+</html>
