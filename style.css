@@ -1,0 +1,144 @@
+:root{--bg-a:#021424;--bg-b:#003b4a;--accent:#06b6d4;--accent2:#00c4b4;--muted:#dff6f5}
+*{box-sizing:border-box}html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg-a),var(--bg-b));color:var(--muted);-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:14px;left:0;right:0;display:flex;justify-content:center;z-index:40}
+.nav-inner{width:100%;max-width:1100px;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;box-shadow:0 10px 40px rgba(2,8,23,0.6);backdrop-filter: blur(6px)}
+.brand{font-weight:800;color:var(--muted);letter-spacing:0.4px}.nav-links a{color:rgba(223,246,245,0.95);margin-left:16px;text-decoration:none;font-weight:600}
+.hero-hero{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:80px 20px;background-image:radial-gradient(ellipse at top left, rgba(0,196,180,0.06), transparent 20%), linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url('');background-size:cover;background-position:center}
+.hero-content{max-width:980px;text-align:center;padding:36px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 24px 80px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+.hero-content h1{font-size:2.1rem;margin:0;color:var(--muted)}.lead{color:rgba(223,246,245,0.9);margin-top:10px}
+.cta-row{margin-top:18px;display:flex;gap:12px;justify-content:center}
+.btn-cta{padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#012b2a;font-weight:700;text-decoration:none;box-shadow:0 12px 40px rgba(0,196,180,0.12)}.btn-ghost{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);color:rgba(223,246,245,0.95);text-decoration:none}
+.home-features{padding:30px 20px}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:0 auto}
+.feature{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:18px;border-radius:12px;text-align:center}
+.main-card{display:flex;justify-content:center;padding:40px 20px 60px}.card{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:28px;box-shadow:0 18px 60px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:end;margin-top:8px}.form-group{display:flex;flex-direction:column}.form-group.full{grid-column:1 / -1}
+label{font-weight:700;color:rgba(223,246,245,0.95);margin-bottom:6px;font-size:0.95rem}
+input[type=text], select{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));color:var(--muted);font-size:1rem;outline:none;transition:box-shadow .18s, transform .12s}
+select {
+  color: var(--muted);
+  background-color: #012b2a; /* dark teal background for readability */
+  border: 1px solid rgba(6,182,212,0.4);
+  appearance: none;
+}
+
+option {
+  background-color: #012b2a; /* dark dropdown background */
+  color: var(--muted);
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(6,182,212,0.8); /* blue glow on focus */
+  border-color: rgba(6,182,212,0.9);
+}
+/* Apply to text, email, and textarea */
+input[type=text],
+input[type=email],
+textarea {
+  background-color: rgba(223,246,245,0.1); /* light teal tone */
+  color: rgba(223,246,245,0.95);          /* text color like your Name field */
+  border: 1px solid rgba(0,196,180,0.5);   /* subtle teal border */
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Placeholder color for all fields */
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+textarea::placeholder {
+  color: rgba(223,246,245,0.5);
+}
+
+/* Focus effect for all fields */
+input[type=text]:focus,
+input[type=email]:focus,
+textarea:focus {
+  box-shadow: 0 10px 40px rgba(6,182,212,0.12);
+  transform: translateY(-2px);
+  border-color: rgba(6,182,212,0.9);
+}
+.site-footer {
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(0, 196, 180, 0.08);  /* soft teal tint */
+  color: rgba(223, 246, 245, 0.8);      /* same muted text tone as site */
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  margin-top: auto;
+  border-top: 1px solid rgba(223, 246, 245, 0.12);
+}
+.site-footer strong {
+  color: rgba(223, 246, 245, 0.95);
+}
+.btn-predict {
+  width: 100%;
+  padding: 16px 20px; /* slightly bigger */
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00b7a8, #00e6c0);
+  border: none;
+  color: #002f2d; /* deeper teal text for better contrast */
+  font-weight: 800;
+  font-size: 1.1rem; /* slightly larger text */
+  cursor: pointer;
+  box-shadow: 0 12px 40px rgba(0,196,180,0.18);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-predict:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgba(0,196,180,0.28);
+}
+/* ULTRA-SHARP BACKGROUND - NO BLUR GUARANTEED */
+.hero-hero {
+  background: url('/static/images/vadodara-bg.jpg.jpg') center/cover no-repeat fixed;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+/* Sharp dark overlay */
+.hero-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 31, 45, 0.78);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 54px;
+  font-weight: 800;
+  text-shadow: 0 4px 25px rgba(0,0,0,0.7);
+  margin-bottom: 16px;
+}
+
+.lead {
+  font-size: 23px;
+  color: #a0f8f8;
+  margin-bottom: 35px;
+}
+
+/* Mobile perfect */
+@media (max-width: 768px) {
+  .hero-hero {
+    background-attachment: scroll;
+  }
+  .hero-content h1 {
+    font-size: 38px;
+  }
+}
